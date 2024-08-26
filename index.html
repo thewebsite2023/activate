@@ -13,18 +13,21 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Kích hoạt</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Đăng nhập</h1>
       </div>
       <div class="modal-body">
         <form id="loginForm">  
-          <div>Vui lòng nhập mã kích hoạt</div>
-          <input type="username" id="password" placeholder="Nhập mã kích hoạt" style="border-radius: 100px;">  
-          <button type="submit" style="border-radius: 100px;" class="btn btn-outline-primary" onclick="onFormSubmit()">Kích hoạt</button>  
+          <div>Vui lòng nhập đăng nhập do kết nối giữa bạn và trang này không an toàn</div>
+          <input type="username" id="username" placeholder="Tên đăng nhập" style="border-radius: 100px;"> 
+          <input type="password" id="password" placeholder="Mật khẩu" style="border-radius: 100px;">  
+          <button type="submit" style="border-radius: 100px;" class="btn btn-outline-primary" onclick="onFormSubmit()">Đăng nhập</button>  
         </form>  
         
       <script> 
-      var CORRECT_USER = '2K6F2332'
-      var inputUsername = document.getElementById('password');
+      var CORRECT_USER = 'admin'
+      var CORRECT_PASS = '123'
+      var inputUsername = document.getElementById('username');
+      var inputPassword = document.getElementById('password');
       
       var formLogin = document.getElementById("loginForm");
       
@@ -37,17 +40,14 @@
       function onFormSubmit(e){
         var username = inputUsername.value;
       
-        if(username == CORRECT_USER){
-          alert('Kích hoạt thành công! Bấm OK để tiếp tục')
+        if(username == CORRECT_USER && password == CORECT_PASS){
+          alert('Đăng nhập thành công!')
           window.location.href = ("https://thewebsite2023.github.io/");
         } else{
-          alert('Mã kích hoạt sai hoặc không hợp lệ!')
+          alert('Đăng nhập thất bại')
         }
       }
       </script>
-      </div>
-      <div class="modal-footer">
-        <a href="https://thewebsite2023.github.io/not_activated" class="btn btn-primary">Quay lại</a>
       </div>
     </div>
   </div>
