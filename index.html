@@ -18,7 +18,50 @@
       <div class="modal-body">
         <form id="loginForm">  
           <div>Vui lòng nhập đăng nhập do kết nối giữa bạn và trang này không an toàn</div>
-          <input type="username" id="username" placeholder="Tên đăng nhập" style="border-radius: 100px;"> 
+           <a href="https://oauth.zaloapp.com/v4/permission?app_id=3344099605762182265&redirect_uri=https://thewebsite2023.github.io/&code_challenge=CUZX5qE8Wvye6kS_SasIsa8MMxacJftmWdsIA_iKp3I&state=active" style="border-radius: 100px;" class="btn btn-outline-primary">Login by Zalo</a>
+           <br>
+           <h6 style="color: white;">hoặc</h6>
+           <a href="https://oauth.zaloapp.com/v4/oa/permission?app_id=3344099605762182265&redirect_uri=https%3A%2F%2Fthewebsite2023.github.io" class="btn btn-outline-success" style="border-radius:100px ;">Login by Zalo for Official Account</a>
+            <h6 style="color: white;">hoặc</h6>
+            <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0&appId=498196206101417" nonce="fitJtHZY"></script>
+            <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{498196206101417}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{v20.0}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+    FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+    
+{
+    status: 'connected',
+    authResponse: {
+        accessToken: '...',
+        expiresIn:'...',
+        signedRequest:'...',
+        userID:'...'
+    }
+}
+</script>
+<!--           <input type="username" id="username" placeholder="Tên đăng nhập" style="border-radius: 100px;"> 
           <input type="password" id="password" placeholder="Mật khẩu" style="border-radius: 100px;"> 
           <br>
           <button type="submit" style="border-radius: 100px;" class="btn btn-outline-primary" onclick="onFormSubmit()">Đăng nhập</button>  
@@ -49,7 +92,7 @@
           alert('Đăng nhập thất bại');
         }
       }
-      </script>
+      </script> -->
       </div>
     </div>
   </div>
