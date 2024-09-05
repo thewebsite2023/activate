@@ -16,83 +16,44 @@
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Đăng nhập</h1>
       </div>
       <div class="modal-body">
-        <form id="loginForm">  
-          <div>Vui lòng nhập đăng nhập do kết nối giữa bạn và trang này không an toàn</div>
-           <a href="https://oauth.zaloapp.com/v4/permission?app_id=3344099605762182265&redirect_uri=https://thewebsite2023.github.io/&code_challenge=CUZX5qE8Wvye6kS_SasIsa8MMxacJftmWdsIA_iKp3I&state=active" style="border-radius: 100px;" class="btn btn-outline-primary">Login by Zalo</a>
-           <br>
-           <h6 style="color: white;">hoặc</h6>
-           <a href="https://oauth.zaloapp.com/v4/oa/permission?app_id=3344099605762182265&redirect_uri=https%3A%2F%2Fthewebsite2023.github.io" class="btn btn-outline-success" style="border-radius:100px ;">Login by Zalo for Official Account</a>
-            <h6 style="color: white;">hoặc</h6>
-            <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0&appId=498196206101417" nonce="fitJtHZY"></script>
-            <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{498196206101417}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{v20.0}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-    FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
-    
-{
-    status: 'connected',
-    authResponse: {
-        accessToken: '...',
-        expiresIn:'...',
-        signedRequest:'...',
-        userID:'...'
-    }
-}
-</script>
-<!--           <input type="username" id="username" placeholder="Tên đăng nhập" style="border-radius: 100px;"> 
+          <input type="username" id="username" placeholder="Tên đăng nhập" style="border-radius: 100px;"> 
           <input type="password" id="password" placeholder="Mật khẩu" style="border-radius: 100px;"> 
           <br>
-          <button type="submit" style="border-radius: 100px;" class="btn btn-outline-primary" onclick="onFormSubmit()">Đăng nhập</button>  
+          <button type="submit" style="border-radius: 100px;" class="btn btn-outline-primary" onclick="Login()">Đăng nhập</button>  
         </form>  
         
-      <script> 
-      var CORRECT_USER = 'admin';
-      var CORRECT_PASS = '123';
-      
-      var inputUsername = document.getElementById('username');
-      var inputPassword = document.getElementById('password');
-      
-      var formLogin = document.getElementById("loginForm");
-      
-      if(loginForm.attachEvent) {
-          loginForm.attachEvent('submit',onFormSubmit);
-      } else{
-        loginForm.addEventListener('submit',onFormSubmit);
-      }
-      
-      function onFormSubmit(e){
-        var username = inputUsername.value;
-      
-        if(username == CORRECT_USER && password == CORECT_PASS){
-          alert('Đăng nhập thành công!');
-          window.location.href = ("https://thewebsite2023.github.io/");
-        } else{
-          alert('Đăng nhập thất bại');
-        }
-      }
-      </script> -->
+      <script>
+  const listAccount = [{
+    username: '123', password: '123'
+  }, {
+    username: 'quantrivien', password: '123'
+  }, {
+    username: 'quantrivienweb', password: 'quantrivien'
+  }, {
+    username: 'service', password: 'service'
+  }];
+  let isLogin = !!localStorage.getItem('token');
+
+  function CheckLogin () {
+    if (isLogin) {
+      window.location.href = 'https://thewebsite2023.github.io/';
+    }
+  }
+
+  function Login () {
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let checkLogin = listAccount.some(value => value.username === username && value.password === password);
+    if (checkLogin) {
+      localStorage.setItem('token', username);
+      isLogin = true;
+      CheckLogin();
+    } else {
+      alert('Tên đăng nhập hoặc mật khẩu sai!');
+    }
+  }
+</script>
       </div>
     </div>
   </div>
