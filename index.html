@@ -98,12 +98,14 @@ body {
             (adsbygoogle=window.adsbygoogle||[]).push({})
          </script>
          <div></div>
-         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111717926-1"></script>
-         <script>
-         function gtag(){dataLayer.push(arguments)}
-         window.dataLayer=window.dataLayer||[],gtag("js",new Date),
-         gtag("config","UA-111717926-1")
-         </script>
+         <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV5FGDGSEG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DV5FGDGSEG');
+</script>
          </div>
       </div>
    </body>
@@ -122,7 +124,7 @@ body {
       });
       firebase.database();
       var e={callbacks:{signInSuccessWithAuthResult:function(e,t,o){return n(e),!1}},
-      signInOptions:[firebase.auth.PhoneAuthProvider.PROVIDER_ID],
+      signInOptions:[firebase.auth.PhoneAuthProvider.PROVIDER_ID,firebase.auth.GoogleAuthProvider.PROVIDER_ID,firebase.autg.MicrosoftAuthProvider.PROVIDER_ID],
       tosUrl:"https://www.google.com",
       privacyPolicyUrl:function(){
          window.location.assign("https://www.google.com")}},
