@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><header><title>Verify user with sms, facebook google, github using firebase</title><style type=text/css>* {
+⁴<!DOCTYPE html><html><header><title>Verify user with sms, facebook google, github using firebase</title><style type=text/css>* {
    box-sizing: border-box;
 }
 
@@ -136,7 +136,9 @@ body {
          document.getElementById("phone").textContent=e.phoneNumber,
          e.photoURL?(document.getElementById("photo").src=e.photoURL,
          document.getElementById("photo").style.display="block"):
-         document.getElementById("photo").style.display="none"
+         document.getElementById("photo").style.display="none"   
+         };
+         firebase.auth().onAuthStateChanged(function(o){
             grecaptcha.reset(window.recaptchaWidgetId);
 
 // Or, if you haven't stored the widget ID:
@@ -163,9 +165,12 @@ confirmationResult.confirm(code).then((result) => {
 }).catch((error) => {
   // User couldn't sign in (bad verification code?)
   // ...
-});  };
-         firebase.auth().onAuthStateChanged(function(o){
-   
+});  
+      firebase.auth().signOut().then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
             console.log("user>>>>",o),
             document.getElementById("loading").style.display="none",
             document.getElementById("loaded").style.display="block",o?n(o):(document.getElementById("user-signed-in").style.display="none",
