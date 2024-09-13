@@ -137,9 +137,12 @@ body {
          e.photoURL?(document.getElementById("photo").src=e.photoURL,
          document.getElementById("photo").style.display="block"):
          document.getElementById("photo").style.display="none"
-            firebase.auth().languageCode = 'it';
-// To apply the default browser preference instead of explicitly setting it.
-// firebase.auth().useDeviceLanguage();
+            grecaptcha.reset(window.recaptchaWidgetId);
+
+// Or, if you haven't stored the widget ID:
+window.recaptchaVerifier.render().then(function(widgetId) {
+  grecaptcha.reset(widgetId);
+});
          const phoneNumber = getPhoneNumberFromUserInput();
 const appVerifier = window.recaptchaVerifier;
 firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
