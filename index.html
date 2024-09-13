@@ -129,16 +129,6 @@ body {
          window.location.assign("https://www.google.com")}},
          t=new firebaseui.auth.AuthUI(firebase.auth()),
          n=function(e){
-         document.getElementById("user-signed-in").style.display="block",
-         document.getElementById("user-signed-out").style.display="none",
-         document.getElementById("name").textContent=e.displayName,
-         document.getElementById("email").textContent=e.email,
-         document.getElementById("phone").textContent=e.phoneNumber,
-         e.photoURL?(document.getElementById("photo").src=e.photoURL,
-         document.getElementById("photo").style.display="block"):
-         document.getElementById("photo").style.display="none"   
-         };
-         firebase.auth().onAuthStateChanged(function(o){
             grecaptcha.reset(window.recaptchaWidgetId);
 
 // Or, if you haven't stored the widget ID:
@@ -171,6 +161,16 @@ confirmationResult.confirm(code).then((result) => {
 }).catch((error) => {
   // An error happened.
 });
+         document.getElementById("user-signed-in").style.display="block",
+         document.getElementById("user-signed-out").style.display="none",
+         document.getElementById("name").textContent=e.displayName,
+         document.getElementById("email").textContent=e.email,
+         document.getElementById("phone").textContent=e.phoneNumber,
+         e.photoURL?(document.getElementById("photo").src=e.photoURL,
+         document.getElementById("photo").style.display="block"):
+         document.getElementById("photo").style.display="none"   
+         };
+         firebase.auth().onAuthStateChanged(function(o){
             console.log("user>>>>",o),
             document.getElementById("loading").style.display="none",
             document.getElementById("loaded").style.display="block",o?n(o):(document.getElementById("user-signed-in").style.display="none",
