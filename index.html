@@ -124,22 +124,6 @@ body {
       firebase.database();
       var e={callbacks:{signInSuccessWithAuthResult:function(e,t,o){return n(e),!1}},
       signInOptions:[firebase.auth.EmailAuthProvider.PROVIDER_ID, firebase.auth.PhoneAuthProvider.PROVIDER_ID, firebase.auth.FacebookAuthProvider.PROVIDER_ID, firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-      import { getAuth, signInWithPhoneNumber } from "firebase/auth";
-
-const phoneNumber = getPhoneNumberFromUserInput();
-const appVerifier = window.recaptchaVerifier;
-
-const auth = getAuth();
-signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-    .then((confirmationResult) => {
-      // SMS sent. Prompt user to type the code from the message, then sign the
-      // user in with confirmationResult.confirm(code).
-      window.confirmationResult = confirmationResult;
-      // ...
-    }).catch((error) => {
-      // Error; SMS not sent
-      // ...
-    });
       tosUrl:"https://www.google.com",
       privacyPolicyUrl:function(){
          window.location.assign("https://www.google.com")}},
@@ -158,6 +142,22 @@ signInWithPhoneNumber(auth, phoneNumber, appVerifier)
             document.getElementById("loaded").style.display="block",o?n(o):(document.getElementById("user-signed-in").style.display="none",
             document.getElementById("user-signed-out").style.display="block",t.start("#firebaseui-container",e))});
             window.addEventListener("load",function(){document.getElementById("sign-out").addEventListener("click",function(){firebase.auth().signOut()}),
+               import { getAuth, signInWithPhoneNumber } from "firebase/auth";
+
+const phoneNumber = getPhoneNumberFromUserInput();
+const appVerifier = window.recaptchaVerifier;
+
+const auth = getAuth();
+signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      // SMS sent. Prompt user to type the code from the message, then sign the
+      // user in with confirmationResult.confirm(code).
+      window.confirmationResult = confirmationResult;
+      // ...
+    }).catch((error) => {
+      // Error; SMS not sent
+      // ...
+    });
             document.getElementById("delete-account").addEventListener("click",function(){
                firebase.auth().currentUser.delete().catch(function(e){
                   "auth/requires-recent-login"==e.code&&firebase.auth().signOut().then(function(){setTimeout(function(){
