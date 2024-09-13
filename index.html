@@ -128,14 +128,36 @@ body {
       privacyPolicyUrl:function(){
          window.location.assign("https://www.google.com")}},
          t=new firebaseui.auth.AuthUI(firebase.auth()),
-         n=function(e){document.getElementById("user-signed-in").style.display="block",
+         n=function(e){
+         document.getElementById("user-signed-in").style.display="block",
          document.getElementById("user-signed-out").style.display="none",
          document.getElementById("name").textContent=e.displayName,
          document.getElementById("email").textContent=e.email,
          document.getElementById("phone").textContent=e.phoneNumber,
          e.photoURL?(document.getElementById("photo").src=e.photoURL,
          document.getElementById("photo").style.display="block"):
-         document.getElementById("photo").style.display="none"};
+         document.getElementById("photo").style.display="none"
+         const phoneNumber = getPhoneNumberFromUserInput();
+const appVerifier = window.recaptchaVerifier;
+firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      // SMS sent. Prompt user to type the code from the message, then sign the
+      // user in with confirmationResult.confirm(code).
+      window.confirmationResult = confirmationResult;
+      // ...
+    }).catch((error) => {
+      // Error; SMS not sent
+      // ...
+    });
+       const code = getCodeFromUserInput();
+confirmationResult.confirm(code).then((result) => {
+  // User signed in successfully.
+  const user = result.user;
+  // ...
+}).catch((error) => {
+  // User couldn't sign in (bad verification code?)
+  // ...
+});  };
          firebase.auth().onAuthStateChanged(function(o){
    
             console.log("user>>>>",o),
