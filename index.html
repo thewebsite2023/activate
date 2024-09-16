@@ -1,164 +1,36 @@
-
-<!DOCTYPE html><html><header><title>Verify user with sms, facebook google, github using firebase</title><style type=text/css>* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-#container {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.clearfix {
-  clear: both;
-}
-
-.hidden {
-  display: none;
-}
-
-#user-info {
-  border: 1px solid #CCC;
-  clear: both;
-  margin: 0 auto 20px;
-  max-width: 400px;
-  padding: 10px;
-  text-align: left;
-}
-
-#photo-container {
-  background-color: #EEE;
-  border: 1px solid #CCC;
-  float: left;
-  height: 80px;
-  margin-right: 10px;
-  width: 80px;
-}
-
-#photo {
-  height: 80px;
-  margin: 0;
-  width: 80px;
-}
-
-@media (max-width: 300px) {
-
-  #photo-container,
-  #photo {
-      height: 40px;
-      width: 40px;
-  }
-}
-</style>
-<script src=https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js></script>
-<link type=text/css rel=stylesheet href=https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="login.js"></script>
+</head>
 <body>
-  <div id=container>
-    <br>
-    <h3>
-</h3>
-<br>
-<h3>Firebase Phone Number Auth. Demo</h3>
-<div id=loading>Loading...</div>
-<div id=loaded class=hidden>
-  <div id=main>
-    <div id=user-signed-in class=hidden>
-      <div id=user-info>
-        <div id=photo-container>
-          <img id=photo>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Đăng nhập</h1>
         </div>
-        <div id=name></div>
-        <div id=email></div>
-        <div id=phone></div>
-        <div class=clearfix></div>
-      </div>
-      <p>
-        <button id=sign-out>Sign Out</button> 
-        <button id=delete-account>Delete account</button>
-      </p>
-    </div>
-    <div id=user-signed-out class=hidden>
-      <h4>You are signed out.</h4>
-      <div id=firebaseui-spa>
-        <h3>Single Page App mode:</h3>
-        <div id=firebaseui-container></div>
+        <div class="modal-body">
+          <h5>Đăng nhập vào tài khoản của bạn</h5>
+          <h5>Tên đăng nhập:</h5>
+          <input type="username" id="username">
+          <h5>Mật khẩu:</h5>
+          <input type="password" id="password">
+          <button class="btn btn-outline-primary" onclick="Login()">Đăng nhập</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<br>
-<h3>
-</h3>
-<br>
-<div>
-  <script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
-  <ins class=adsbygoogle style="display:block; text-align:center;" data-ad-layout=in-article data-ad-format=fluid data-ad-client=ca-pub-1121308659421064 data-ad-slot=8232164616></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
-  <div></div>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111717926-1"></script>
-  <script>
-  function gtag(){
-    dataLayer.push(arguments)}
-    window.dataLayer=window.dataLayer||[],gtag("js",new Date),
-    gtag("config","UA-111717926-1")
-    </script>
-    </div>
-  </div>
-</body>
-<script type=text/javascript></script>
-<script src=https://www.gstatic.com/firebasejs/6.0.4/firebase.js></script>
 <script>
-!function(){
-  console.log("connect to firebase");
-  firebase.initializeApp({
-    apiKey: "AIzaSyC4v8s7g0bP8TTg8GzIOk0Q9OYz2MMZYA8",
-  authDomain: "fir-app-2013.firebaseapp.com",
-  databaseURL: "https://fir-app-2013-default-rtdb.firebaseio.com",
-  projectId: "fir-app-2013",
-  storageBucket: "fir-app-2013.appspot.com",
-  messagingSenderId: "713327794660",
-  appId: "1:713327794660:web:d22869c22c592ffd428ff1",
-  measurementId: "G-0EKGFS2T3Z"
-    });
-    firebase.database();
-
-    var e={
-      callbacks:{signInSuccessWithAuthResult:
-      function(e,t,o){
-        return n(e),!1}},
-        signInOptions:[firebase.auth.PhoneAuthProvider.PROVIDER_ID,firebase.auth.EmailAuthProvider.PROVIDER_ID],
-        tosUrl:"https://www.google.com",
-        privacyPolicyUrl:function(){
-          window.location.assign("https://www.google.com")}},
-          t=new firebaseui.auth.AuthUI(firebase.auth()),
-          n=function(e){
-            document.getElementById("user-signed-in").style.display="block",
-            document.getElementById("user-signed-out").style.display="none",
-            document.getElementById("name").textContent=e.displayName,
-            document.getElementById("email").textContent=e.email,
-            document.getElementById("phone").textContent=e.phoneNumber,e.photoURL
-            ?(document.getElementById("photo").src=e.photoURL,
-            document.getElementById("photo").style.display="block"):
-            document.getElementById("photo").style.display="none"};
-            firebase.auth().onAuthStateChanged(
-              function(o){
-                console.log("user>>>>",o),
-                document.getElementById("loading").style.display="none",
-                document.getElementById("loaded").style.display="block",
-                o?n(o):(
-                  document.getElementById("user-signed-in").style.display="none",
-                  document.getElementById("user-signed-out").style.display="block",
-                  t.start("#firebaseui-container",e))});
-                  window.addEventListener("load",function(){
-                    document.getElementById("sign-out").addEventListener("click",function(){
-                      firebase.auth().signOut()}),
-                      document.getElementById("delete-account").addEventListener("click",function(){
-                        firebase.auth().currentUser.delete().catch(function(e){
-                          "auth/requires-recent-login"==e.code&&firebase.auth().signOut().then(function(){
-                            setTimeout(function(){
-                              alert("Please sign in again to delete your account.")},1)})})})})}()</script>
+      $(document).ready(function() {  
+    $('#staticBackdrop').modal('show');  
+});
+</script>
+</body>
+</html>
