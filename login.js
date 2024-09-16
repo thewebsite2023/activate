@@ -1,17 +1,11 @@
-const listAccount = [{
-    username: '123', password: '123'
-  }, {
-    username: 'quantrivien', password: '123'
-  }, {
-    username: 'quantrivienweb', password: 'quantrivien'
-  }, {
-    username: 'cartoonwebsite', password: 'cartoonwebsite'
+    const listAccount = [{
+    username: '940211', password: '15112015'
   }];
   let isLogin = !!localStorage.getItem('token');
 
   function CheckLogin () {
     if (isLogin) {
-      window.location.href = 'https://thewebsite2023.github.io/';
+      window.location.href = 'https://thewebsite2023.github.io/my-exam';
     }
   }
 
