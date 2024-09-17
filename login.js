@@ -18,6 +18,6 @@
       isLogin = true;
       CheckLogin();
     } else {
-      alert('Tên đăng nhập hoặc mật khẩu sai!');
+      result.innerHTML = "<br><h5>Tên đăng nhập hoặc mật khẩu sai!</h5>";
     }
   }
