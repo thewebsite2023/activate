@@ -1,5 +1,7 @@
     const listAccount = [{
     username: '940211', password: '15112015'
+  }, {
+    username: '626162', password: '05012013'
   }];
   let isLogin = !!localStorage.getItem('token');
 
@@ -18,6 +20,6 @@
       isLogin = true;
       CheckLogin();
     } else {
-      result.innerHTML = "<br><h5>Tên đăng nhập hoặc mật khẩu sai!</h5>";
+      result.innerHTML = "<h5>Tên đăng nhập hoặc mật khẩu sai!</h5>";
     }
   }
