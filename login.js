@@ -7,7 +7,7 @@
 
   function CheckLogin () {
     if (isLogin) {
-      window.location.href = 'https://thewebsite2023.github.io/my-exam';
+      window.location.href = 'https://thewebsite2023.github.io/my-exam-en';
     }
   }
 
