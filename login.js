@@ -1,4 +1,4 @@
-    const listAccount = [{
+const listAccount = [{
     username: '940211', password: '15112015'
   }, {
     username: '626162', password: '05012013'
@@ -6,12 +6,13 @@
     username: '216390', password: '14092013'
   }];
   let isLogin = !!localStorage.getItem('token');
-
+document.getElementById('login-btn').addEventListener('click', async () => {
   function CheckLogin () {
     if (isLogin) {
       window.location.href = 'https://thewebsite2023.github.io/my-exam-en/';
     }
   }
+}
 
   function Login () {
     let username = document.getElementById('username').value;
