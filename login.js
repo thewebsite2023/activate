@@ -6,7 +6,6 @@ const listAccount = [{
     username: '216390', password: '14092013'
   }];
   let isLogin = !!localStorage.getItem('token');
-document.getElementById('login-btn').addEventListener('click', async () => {
   function CheckLogin () {
     if (isLogin) {
       window.location.href = 'https://thewebsite2023.github.io/my-exam-en/';
@@ -25,4 +24,3 @@ document.getElementById('login-btn').addEventListener('click', async () => {
       result.innerHTML = "<h5>Tên đăng nhập hoặc mật khẩu sai!</h5>";
     }
   }
-    }
