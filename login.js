@@ -12,7 +12,6 @@ document.getElementById('login-btn').addEventListener('click', async () => {
       window.location.href = 'https://thewebsite2023.github.io/my-exam-en/';
     }
   }
-}
 
   function Login () {
     let username = document.getElementById('username').value;
@@ -26,3 +25,4 @@ document.getElementById('login-btn').addEventListener('click', async () => {
       result.innerHTML = "<h5>Tên đăng nhập hoặc mật khẩu sai!</h5>";
     }
   }
+    }
