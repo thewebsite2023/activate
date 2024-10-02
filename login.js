@@ -21,6 +21,6 @@ const listAccount = [{
       isLogin = true;
       CheckLogin();
     } else {
-      result.innerHTML = "<h5>Tên đăng nhập hoặc mật khẩu sai!</h5>";
+      result.innerHTML = "<h5>Dữ liệu mà bạn cung cấp không trùng khớp với dữ liệu của chúng tôi!</h5>";
     }
   }
